@@ -5,14 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Switch } from 'react-native-paper';
 
 import * as themeActions from 'app/store/actions/themeActions';
-import { IThemeState } from 'app/models/reducers/theme';
 
-interface IState {
-  themeReducer: IThemeState;
-}
-
-const ThemeController: React.FC = () => {
-  const isDark = useSelector((state: IState) => state.themeReducer.isDark);
+const ThemeController = () => {
+  const isDark = useSelector((state) => state.themeReducer.isDark);
 
   const dispatch = useDispatch();
   const onToggleTheme = () => dispatch(themeActions.setIsDarkTheme(!isDark));

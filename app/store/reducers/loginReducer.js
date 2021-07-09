@@ -4,12 +4,7 @@
 import createReducer from 'app/lib/createReducer';
 import * as types from 'app/store/actions/types';
 
-import { ILoginState } from 'app/models/reducers/login';
-import {
-  ILoginRequestState,
-  ILoginResponseState,
-} from 'app/models/actions/login';
-const initialState: ILoginState = {
+const initialState = {
   isLoggedIn: false,
   id: 0,
   username: '',
@@ -17,30 +12,30 @@ const initialState: ILoginState = {
 };
 
 export const loginReducer = createReducer(initialState, {
-  [types.LOGIN_REQUEST](state: ILoginState, action: ILoginRequestState) {
+  [types.LOGIN_REQUEST](state, action) {
     return {
       ...state,
       username: action.username,
       password: action.password,
     };
   },
-  [types.LOGIN_LOADING_ENDED](state: ILoginState) {
+  [types.LOGIN_LOADING_ENDED](state) {
     return { ...state };
   },
-  [types.LOGIN_RESPONSE](state: ILoginState, action: ILoginResponseState) {
+  [types.LOGIN_RESPONSE](state, action) {
     return {
       ...state,
       id: action.response.id,
       isLoggedIn: true,
     };
   },
-  [types.LOGIN_FAILED](state: ILoginState) {
+  [types.LOGIN_FAILED](state) {
     return {
       ...state,
       isLoggedIn: false,
     };
   },
-  [types.LOG_OUT](state: ILoginState) {
+  [types.LOG_OUT](state) {
     return {
       ...state,
       isLoggedIn: false,

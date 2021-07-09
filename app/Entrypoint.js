@@ -18,7 +18,6 @@ import {
 
 import Navigator from 'app/navigation';
 import configureStore from 'app/store';
-import { IThemeState } from 'app/models/reducers/theme';
 
 const PaperThemeDefault = {
   ...PaperDefaultTheme,
@@ -54,12 +53,8 @@ const CombinedDarkTheme = {
 
 const { persistor, store } = configureStore();
 
-interface IState {
-  themeReducer: IThemeState;
-}
-
-const RootNavigation: React.FC = () => {
-  const isDark = useSelector((state: IState) => state.themeReducer.isDark);
+const RootNavigation = () => {
+  const isDark = useSelector((state) => state.themeReducer.isDark);
   const paperTheme = isDark ? PaperThemeDark : PaperThemeDefault;
   const combinedTheme = isDark ? CombinedDarkTheme : CombinedDefaultTheme;
 
@@ -70,7 +65,7 @@ const RootNavigation: React.FC = () => {
   );
 };
 
-const Entrypoint: React.FC = () => {
+const Entrypoint = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={<ActivityIndicator />} persistor={persistor}>
