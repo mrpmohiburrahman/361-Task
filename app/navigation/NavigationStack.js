@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavigationContainer, Theme } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
 
 import { navigationRef } from './NavigationService';
@@ -11,9 +11,9 @@ import Home from 'app/screens/Home';
 import ThemeController from '../components/ThemeController';
 import { StatusBar } from 'react-native';
 
-const Stack = createStackNavigator();
-const AuthStack = createStackNavigator();
-const LoggedInStack = createStackNavigator();
+const Stack = createNativeStackNavigator();
+const AuthStack = createNativeStackNavigator();
+const LoggedInStack = createNativeStackNavigator();
 
 const homeOptions = {
   title: 'Home',
